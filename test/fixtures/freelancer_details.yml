@@ -1,0 +1,15 @@
+one:
+  user: one
+  contract_signed_date: 2020-06-09 14:37:36
+  form_1099_signed_date: 2020-06-09 14:37:36
+  background_check_passed: 2020-06-09 14:37:36
+  interview_scheduled: true
+  qualified: true
+
+two:
+  user: two
+  contract_signed_date: 2020-06-09 14:37:36
+  form_1099_signed_date: 2020-06-09 14:37:36
+  background_check_passed: 2020-06-09 14:37:36
+  interview_scheduled: true
+  qualified: false

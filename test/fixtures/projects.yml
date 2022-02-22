@@ -1,0 +1,11 @@
+one:
+  title: Project number one,
+  description: This is some cool description for projects like this,
+  project_duration: 12 Hours,
+  project_status: active,
+  invoicing_schedule: one_time,
+  client_type_of_billing: custom_type,
+  client_payment_amount: 12,
+  freelancer_payment_amount: 12,
+  freelancer_detail_id: 4,
+  client_detail_id: 6,

@@ -1,0 +1,11 @@
+one:
+  user: one
+  project: one
+  bids_status: 1
+  compensation: 1
+
+two:
+  user: two
+  project: two
+  bids_status: 1
+  compensation: 1

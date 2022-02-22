@@ -1,0 +1,11 @@
+one:
+  invoice: one
+  item: MyString
+  price: 10
+  qty: 1
+
+two:
+  invoice: two
+  item: MyString
+  qty: 1
+  price: 1
