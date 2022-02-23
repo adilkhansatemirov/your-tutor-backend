@@ -1,5 +1,7 @@
 # inhome-backend-staging
 
+sudo service postgresql start
+
 ## Installation
 
 ```bash
