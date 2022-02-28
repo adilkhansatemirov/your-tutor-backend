@@ -10,7 +10,7 @@ class ResetPasswordNotifierMailer < ActionMailer::Base
   def self.send(to, activation_code)
     raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
     user = User.find_by(email: to)
-    user.reset_password_token = hashed
+    user.reset_password_token = raw
     user.reset_password_sent_at = Time.now.utc
     user.save
 
