@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_20_104031) do
+ActiveRecord::Schema.define(version: 2022_03_04_103601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -25,53 +25,8 @@ ActiveRecord::Schema.define(version: 2020_12_20_104031) do
     t.boolean "new_invoice_submitted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "new_freelancer_signed_up", default: true
+    t.boolean "new_tutor_signed_up", default: true
     t.index ["user_id"], name: "index_allowed_notifications_on_user_id"
-  end
-
-  create_table "client_details", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "company_name"
-    t.boolean "all_checked", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "stripe_customer_id"
-    t.index ["user_id"], name: "index_client_details_on_user_id"
-  end
-
-  create_table "freelancer_details", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "contract_signed_date"
-    t.datetime "form_1099_signed_date"
-    t.datetime "background_check_passed"
-    t.string "candidate_id"
-    t.string "report_id"
-    t.string "status"
-    t.string "ip_address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "resume_url"
-    t.string "sign_up_code"
-    t.boolean "sign_up_code_entered", default: false
-    t.boolean "interview_scheduled", default: false
-    t.boolean "qualified", default: false
-    t.integer "work_hours_per_week"
-    t.integer "desired_hourly_rate"
-    t.string "connected_account_id"
-    t.string "public_id"
-    t.string "file_format"
-    t.integer "pages"
-    t.index ["user_id"], name: "index_freelancer_details_on_user_id"
-  end
-
-  create_table "freelancer_skills", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "skill_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["skill_id"], name: "index_freelancer_skills_on_skill_id"
-    t.index ["user_id", "skill_id"], name: "add_unique_columns_freelancer_skills", unique: true
-    t.index ["user_id"], name: "index_freelancer_skills_on_user_id"
   end
 
   create_table "good_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -162,6 +117,16 @@ ActiveRecord::Schema.define(version: 2020_12_20_104031) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "student_details", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "company_name"
+    t.boolean "all_checked", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_customer_id"
+    t.index ["user_id"], name: "index_student_details_on_user_id"
+  end
+
   create_table "time_entries", force: :cascade do |t|
     t.string "task"
     t.decimal "hours", precision: 6, scale: 2, null: false
@@ -182,6 +147,41 @@ ActiveRecord::Schema.define(version: 2020_12_20_104031) do
     t.bigint "project_id"
     t.bigint "freelancer_id"
     t.index ["project_id"], name: "index_timesheets_on_project_id"
+  end
+
+  create_table "tutor_details", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "contract_signed_date"
+    t.datetime "form_1099_signed_date"
+    t.datetime "background_check_passed"
+    t.string "candidate_id"
+    t.string "report_id"
+    t.string "status"
+    t.string "ip_address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "resume_url"
+    t.string "sign_up_code"
+    t.boolean "sign_up_code_entered", default: false
+    t.boolean "interview_scheduled", default: false
+    t.boolean "qualified", default: false
+    t.integer "work_hours_per_week"
+    t.integer "desired_hourly_rate"
+    t.string "connected_account_id"
+    t.string "public_id"
+    t.string "file_format"
+    t.integer "pages"
+    t.index ["user_id"], name: "index_tutor_details_on_user_id"
+  end
+
+  create_table "tutor_skills", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_tutor_skills_on_skill_id"
+    t.index ["user_id", "skill_id"], name: "add_unique_columns_tutor_skills", unique: true
+    t.index ["user_id"], name: "index_tutor_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -216,13 +216,13 @@ ActiveRecord::Schema.define(version: 2020_12_20_104031) do
   end
 
   add_foreign_key "allowed_notifications", "users"
-  add_foreign_key "client_details", "users"
-  add_foreign_key "freelancer_details", "users"
-  add_foreign_key "freelancer_skills", "skills"
-  add_foreign_key "freelancer_skills", "users"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "time_entries"
   add_foreign_key "project_bids", "users"
-  add_foreign_key "projects", "client_details"
-  add_foreign_key "projects", "freelancer_details"
+  add_foreign_key "projects", "student_details", column: "client_detail_id"
+  add_foreign_key "projects", "tutor_details", column: "freelancer_detail_id"
+  add_foreign_key "student_details", "users"
+  add_foreign_key "tutor_details", "users"
+  add_foreign_key "tutor_skills", "skills"
+  add_foreign_key "tutor_skills", "users"
 end

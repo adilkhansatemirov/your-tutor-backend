@@ -1,4 +1,4 @@
-class FreelancerDetail < ApplicationRecord
+class TutorDetail < ApplicationRecord
   belongs_to :user
   has_many :project, :dependent => :nullify
 

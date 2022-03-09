@@ -1,4 +1,4 @@
-class ClientDetail < ApplicationRecord
+class StudentDetail < ApplicationRecord
   belongs_to :user
 
   include PgSearch::Model

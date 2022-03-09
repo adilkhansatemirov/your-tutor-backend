@@ -1,4 +1,4 @@
-module Freelancer::NotificationsService
+module Tutor::NotificationsService
 
   def self.notify_about_new_timesheet(timesheet)
     admins = User.admin
@@ -17,11 +17,11 @@ module Freelancer::NotificationsService
     end
   end
 
-  def self.notify_about_new_freelancer(user)
+  def self.notify_about_new_tutor(user)
     admins = User.admin
     admins.each do |admin|
-      if AllowedNotification.where(user_id: admin[:id]).first[:new_freelancer_signed_up]
-        email = { :address => admin[:email], :user_role => "admin", :subject => "New Freelancer", :text => "New Freelancer #{user.first_name} #{user.last_name} has just signed up!" }
+      if AllowedNotification.where(user_id: admin[:id]).first[:new_tutor_signed_up]
+        email = { :address => admin[:email], :user_role => "admin", :subject => "New Tutor", :text => "New Tutor #{user.first_name} #{user.last_name} has just signed up!" }
         Mailer.send(email)
       end
     end

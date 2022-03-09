@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable #, :confirmable
 
-  enum role: { admin: 0, freelancer: 1, client: 2 }
+  enum role: { admin: 0, tutor: 1, student: 2 }
   validates :first_name, :last_name, presence: true
 
-  has_one :freelancer_detail, dependent: :delete
-  has_one :client_detail, dependent: :delete
-  has_many :freelancer_skills, dependent: :delete_all
+  has_one :tutor_detail, dependent: :delete
+  has_one :student_detail, dependent: :delete
+  has_many :tutor_skills, dependent: :delete_all
 
   def token
     JsonWebToken.encode(
