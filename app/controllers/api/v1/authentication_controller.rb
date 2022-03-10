@@ -96,7 +96,7 @@ class Api::V1::AuthenticationController < ApplicationController
           token: user.token
         }
       end
-      # render json: UserBlueprint.render(user, root: :data, view: :auth)
+      render json: UserBlueprint.render(user, root: :data, view: :auth)
     else
       render json: { error: "Email or password is incorrect" }, status: 401
     end

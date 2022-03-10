@@ -26,6 +26,7 @@ gem 'activerecord-import'
 
 # send email
 gem 'sendgrid-ruby', '6.2.1'
+gem 'mailjet'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # upload file
