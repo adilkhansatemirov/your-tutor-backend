@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_04_103601) do
+ActiveRecord::Schema.define(version: 2022_03_21_084142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -95,17 +95,17 @@ ActiveRecord::Schema.define(version: 2022_03_04_103601) do
     t.string "project_duration"
     t.integer "project_status"
     t.integer "invoicing_schedule"
-    t.integer "client_type_of_billing"
-    t.decimal "client_payment_amount", precision: 7, scale: 2, null: false
-    t.decimal "freelancer_payment_amount", precision: 7, scale: 2, null: false
-    t.bigint "freelancer_detail_id"
-    t.bigint "client_detail_id"
+    t.integer "student_type_of_billing"
+    t.decimal "student_payment_amount", precision: 7, scale: 2, null: false
+    t.decimal "tutor_payment_amount", precision: 7, scale: 2, null: false
+    t.bigint "tutor_detail_id"
+    t.bigint "student_detail_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "automated_invoicing", default: false
     t.string "error_message"
-    t.index ["client_detail_id"], name: "index_projects_on_client_detail_id"
-    t.index ["freelancer_detail_id"], name: "index_projects_on_freelancer_detail_id"
+    t.index ["student_detail_id"], name: "index_projects_on_student_detail_id"
+    t.index ["tutor_detail_id"], name: "index_projects_on_tutor_detail_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -219,8 +219,8 @@ ActiveRecord::Schema.define(version: 2022_03_04_103601) do
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "time_entries"
   add_foreign_key "project_bids", "users"
-  add_foreign_key "projects", "student_details", column: "client_detail_id"
-  add_foreign_key "projects", "tutor_details", column: "freelancer_detail_id"
+  add_foreign_key "projects", "student_details"
+  add_foreign_key "projects", "tutor_details"
   add_foreign_key "student_details", "users"
   add_foreign_key "tutor_details", "users"
   add_foreign_key "tutor_skills", "skills"
