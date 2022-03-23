@@ -1,4 +1,4 @@
-module Freelancer::FreelancersService
+module Tutor::FreelancersService
 
   def self.upload_resume(user_id, resume)
     freelancer_detail = FreelancerDetail.find_by(user_id: user_id)
