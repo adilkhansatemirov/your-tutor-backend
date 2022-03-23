@@ -11,7 +11,7 @@ class Admin::ProjectBlueprint < Blueprinter::Base
          :freelancer_payment_amount,
          :automated_invoicing
 
-  association :client_detail, blueprint: Admin::ClientDetailBlueprint
+  association :client_detail, blueprint: Admin::StudentDetailBlueprint
   association :freelancer_detail, blueprint: Admin::FreelancerDetailBlueprint
 
   view :extended do

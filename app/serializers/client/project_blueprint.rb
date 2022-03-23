@@ -6,7 +6,7 @@ class Client::ProjectBlueprint < Blueprinter::Base
          :client_payment_amount
 
   view :extended do
-    association :client_detail, blueprint: Admin::ClientDetailBlueprint
+    association :client_detail, blueprint: Admin::StudentDetailBlueprint
 
     fields :description,
            :project_duration,
