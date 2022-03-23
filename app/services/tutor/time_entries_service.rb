@@ -1,4 +1,4 @@
-module Freelancer::TimeEntriesService
+module Tutor::TimeEntriesService
 
   def self.create_time_entry(params)
     time_entry = TimeEntry.new(params)

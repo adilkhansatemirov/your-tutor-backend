@@ -1,4 +1,4 @@
-module Freelancer::TimesheetsService
+module Tutor::TimesheetsService
 
   def self.create_timesheet(params)
     timesheet = Timesheet.new(params.except(:time_entries))

@@ -1,4 +1,4 @@
-module Freelancer::SkillsService
+module Tutor::SkillsService
 
   def self.format_skills(skills)
     formatted_skills = {}

@@ -1,4 +1,4 @@
-module Freelancer::FreelancerSkillsService
+module Tutor::FreelancerSkillsService
 
   def self.create_multiple(items, user_id)
     freelancer_skills = []

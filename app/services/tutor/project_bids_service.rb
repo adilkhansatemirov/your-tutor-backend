@@ -1,4 +1,4 @@
-module Freelancer::ProjectBidsService
+module Tutor::ProjectBidsService
 
   def self.update_project_bid(params, project_bid_id)
     project_bid = ProjectBid.find(project_bid_id)
