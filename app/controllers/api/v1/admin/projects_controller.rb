@@ -92,8 +92,8 @@ class Api::V1::Admin::ProjectsController < ApplicationController
         :invoicing_schedule,
         :student_type_of_billing,
         :student_payment_amount,
-        :freelancer_payment_amount,
-        :freelancer_detail_id,
+        :tutor_payment_amount,
+        :tutor_detail_id,
         :student_detail_id,
       ],
       project_bids: [
@@ -121,7 +121,7 @@ class Api::V1::Admin::ProjectsController < ApplicationController
   end
 
   def assign_freelancer_params
-    params.require(:project_data).permit(:freelancer_detail_id, :project_status, :freelancer_payment_amount)
+    params.require(:project_data).permit(:tutor_detail_id, :project_status, :freelancer_payment_amount)
   end
 
   def start_bids_params

@@ -6,21 +6,21 @@ class Admin::ProjectBlueprint < Blueprinter::Base
          :project_status,
          :error_message,
          :invoicing_schedule,
-         :client_type_of_billing,
-         :client_payment_amount,
-         :freelancer_payment_amount,
+         :student_type_of_billing,
+         :student_payment_amount,
+         :tutor_payment_amount,
          :automated_invoicing
 
-  association :client_detail, blueprint: Admin::StudentDetailBlueprint
-  association :freelancer_detail, blueprint: Admin::FreelancerDetailBlueprint
+  association :student_detail, blueprint: Admin::StudentDetailBlueprint
+  association :tutor_detail, blueprint: Admin::TutorDetailBlueprint
 
   view :extended do
     field :project_bids do |project|
       bids = []
       project.project_bids.applied.order(updated_at: :desc).each do |bid|
-        freelancer_skill_groups = []
-        bid.user.freelancer_skills.each do |skill|
-          freelancer_skill_groups.push(skill.skill.category)
+        tutor_skill_groups = []
+        bid.user.tutor_skills.each do |skill|
+          tutor_skill_groups.push(skill.skill.category)
         end
 
         bids.push({
@@ -31,9 +31,9 @@ class Admin::ProjectBlueprint < Blueprinter::Base
             first_name: bid.user.first_name,
             last_name: bid.user.last_name,
             email: bid.user.email,
-            skill_groups: freelancer_skill_groups.uniq,
-            freelancer_detail: {
-              id: bid.user.freelancer_detail.id,
+            skill_groups: tutor_skill_groups.uniq,
+            tutor_detail: {
+              id: bid.user.tutor_detail.id,
             },
           },
         })
@@ -53,10 +53,10 @@ class Admin::ProjectBlueprint < Blueprinter::Base
           timesheet_status: timesheet.timesheet_status,
           timesheet_date: timesheet.timesheet_date,
           hours: hours,
-          freelancer: timesheet.freelancer ? {
-            first_name: timesheet.freelancer.first_name,
-            last_name: timesheet.freelancer.last_name,
-            email: timesheet.freelancer.email,
+          tutor: timesheet.tutor ? {
+            first_name: timesheet.tutor.first_name,
+            last_name: timesheet.tutor.last_name,
+            email: timesheet.tutor.email,
           } : nil,
         })
       end

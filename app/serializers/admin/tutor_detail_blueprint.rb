@@ -1,5 +1,5 @@
 module Admin
-  class FreelancerDetailBlueprint < Blueprinter::Base
+  class TutorDetailBlueprint < Blueprinter::Base
     identifier :id
 
     fields :user_id,
@@ -23,7 +23,7 @@ module Admin
       user = freelancer_detail.user
       if user.is_blocked?
         'blocked'
-      elsif Project.where(freelancer_detail_id: freelancer_detail.id).exists?
+      elsif Project.where(tutor_detail_id: freelancer_detail.id).exists?
         'billing'
       elsif freelancer_detail.qualified?
         'approved'
@@ -34,7 +34,7 @@ module Admin
 
     field :specialization do |freelancer_detail|
       freelancer_skill_groups = []
-      freelancer_detail.user.freelancer_skills.each do |skill|
+      freelancer_detail.user.tutor_skills.each do |skill|
         freelancer_skill_groups.push(skill.skill.category)
       end
       freelancer_skill_groups.uniq

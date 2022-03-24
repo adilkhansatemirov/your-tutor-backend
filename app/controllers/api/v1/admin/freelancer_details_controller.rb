@@ -23,7 +23,7 @@ class Api::V1::Admin::FreelancerDetailsController < ApplicationController
 
   # GET /admin/freelancer_details/all
   def all
-    freelancer_details = FreelancerDetail.all.order(updated_at: :desc)
+    freelancer_details = TutorDetail.all.order(updated_at: :desc)
     render json: Admin::FreelancerDetailBlueprint.render(freelancer_details)
   end
 

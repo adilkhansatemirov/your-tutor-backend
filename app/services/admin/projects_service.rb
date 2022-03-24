@@ -2,12 +2,14 @@ module Admin::ProjectsService
 
   def self.create_project(params)
     project = Project.new(params[:project])
+    puts 'projectprojectprojectproject'
+    puts project.as_json
     project.save
     if params[:project][:freelancer_detail_id]
       approve_freelancer(params[:project][:freelancer_detail_id])
     end
     bids = Admin::ProjectBidsService.create_mutiple(params[:project_bids], project)
-    Admin::ProjectBidsMailingJob.perform_later(bids)
+    # Admin::ProjectBidsMailingJob.perform_later(bids)
   end
 
   def self.update_project(params, project_id)
