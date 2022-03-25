@@ -32,7 +32,7 @@ Rails.application.routes.draw do
           get "all", on: :collection
         end
         resources :payments, only: :index
-        resources :freelancer_details, only: [:index, :update] do
+        resources :tutor_details, only: [:index, :update] do
           get "all", on: :collection
         end
         resources :freelancers, only: [:show, :destroy] do

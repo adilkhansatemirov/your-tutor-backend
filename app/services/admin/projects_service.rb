@@ -103,7 +103,7 @@ module Admin::ProjectsService
   private
 
   def self.approve_freelancer(freelancer_detail_id)
-    freelancer_detail = FreelancerDetail.find(freelancer_detail_id)
+    freelancer_detail = TutorDetail.find(freelancer_detail_id)
     if freelancer_detail
       freelancer_detail.update(qualified: true)
     end
