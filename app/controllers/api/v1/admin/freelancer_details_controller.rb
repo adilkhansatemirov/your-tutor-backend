@@ -10,7 +10,7 @@ class Api::V1::Admin::FreelancerDetailsController < ApplicationController
     freelancers_details = sort(search(filter_freelancers(freelancer_details_scope)))
     result = freelancers_details.page(params[:page]).per(per_page)
 
-    render json: Admin::FreelancerDetailBlueprint.render(result, root: :list, meta: {
+    render json: Admin::TutorDetailBlueprint.render(result, root: :list, meta: {
         pagination: page_info(result),
         counters: {
             approved_count: freelancer_details_scope.where(qualified: true).count,
@@ -24,7 +24,7 @@ class Api::V1::Admin::FreelancerDetailsController < ApplicationController
   # GET /admin/freelancer_details/all
   def all
     freelancer_details = TutorDetail.all.order(updated_at: :desc)
-    render json: Admin::FreelancerDetailBlueprint.render(freelancer_details)
+    render json: Admin::TutorDetailBlueprint.render(freelancer_details)
   end
 
   # PUT /admin/freelancer_details/:id

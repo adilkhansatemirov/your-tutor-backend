@@ -26,7 +26,7 @@ class Admin::FreelancerBlueprint < Blueprinter::Base
     freelancer_skill_groups.uniq
   end
 
-  association :freelancer_detail, blueprint: Admin::FreelancerDetailBlueprint
+  association :freelancer_detail, blueprint: Admin::TutorDetailBlueprint
 
   view :extended do
     field :skills do |user|
