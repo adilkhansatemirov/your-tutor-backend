@@ -1,4 +1,4 @@
-class Api::V1::Client::ProjectsController < ApplicationController
+class Api::V1::Student::ProjectsController < ApplicationController
   before_action :authenticate_api_user!, :require_client
 
   def index
