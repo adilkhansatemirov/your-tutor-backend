@@ -1,4 +1,4 @@
-class Client::ProjectBlueprint < Blueprinter::Base
+class Student::ProjectBlueprint < Blueprinter::Base
   identifier :id
 
   fields :title,

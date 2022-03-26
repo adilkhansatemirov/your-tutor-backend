@@ -3,7 +3,7 @@ class Api::V1::Client::ProjectsController < ApplicationController
 
   def index
     projects = Project.where(is_created_by_client: true).where(client_detail_id: current_api_user.client_detail.id).order(updated_at: :desc)
-    render json: Client::ProjectBlueprint.render(projects, root: :list, meta: {})
+    render json: Student::ProjectBlueprint.render(projects, root: :list, meta: {})
   end
 
   def create
@@ -13,7 +13,7 @@ class Api::V1::Client::ProjectsController < ApplicationController
 
   def show
     project = Project.find(params[:id])
-    render json: Client::ProjectBlueprint.render(project, view: :extended)
+    render json: Student::ProjectBlueprint.render(project, view: :extended)
   end
 
   private
