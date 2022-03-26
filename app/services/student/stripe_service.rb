@@ -1,4 +1,4 @@
-module Client::StripeService
+module Student::StripeService
 
   def self.create_bank_account_token(public_token, account_id)
     client = Plaid::Client.new(env: ENV["PLAID_HOST"],

@@ -1,4 +1,4 @@
-class Client::InvoiceBlueprint < Blueprinter::Base
+class Student::InvoiceBlueprint < Blueprinter::Base
   identifier :id
   
   fields :invoice_date,
@@ -13,13 +13,13 @@ class Client::InvoiceBlueprint < Blueprinter::Base
     {
       title: invoice.project.title,
       invoicing_schedule: invoice.project.invoicing_schedule,
-      client_type_of_billing: invoice.project.client_type_of_billing,
-      client_payment_amount: invoice.project.client_payment_amount,
-      freelancer_detail: {
+      student_type_of_billing: invoice.project.student_type_of_billing,
+      student_payment_amount: invoice.project.student_payment_amount,
+      tutor_detail: {
         user: {
-          first_name: invoice.project.freelancer_detail.user.first_name,
-          last_name: invoice.project.freelancer_detail.user.last_name,
-          email: invoice.project.freelancer_detail.user.email
+          first_name: invoice.project.tutor_detail.user.first_name,
+          last_name: invoice.project.tutor_detail.user.last_name,
+          email: invoice.project.tutor_detail.user.email
         }
       }
     }

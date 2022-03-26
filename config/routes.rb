@@ -58,6 +58,17 @@ Rails.application.routes.draw do
           post "pay_freelancer", on: :member
         end
       end
+
+       # Student API
+       namespace :student do
+        resources :invoices, only: [:index, :show]
+        # resources :projects, only: [:index, :show, :create]
+        resources :student_details do
+          post 'connect_card', on: :collection
+          post 'connect_bank', on: :collection
+        end
+      end
+
     end
   end
 end

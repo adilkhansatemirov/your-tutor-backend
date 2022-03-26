@@ -44,13 +44,13 @@ class ApplicationController < ActionController::API
   end
 
   def require_freelancer
-    if current_api_user && current_api_user.role != 'freelancer'
+    if current_api_user && current_api_user.role != 'tutor'
       render json: { error: 'Not authorized to access' }, status: 401
     end
   end
 
   def require_client
-    if current_api_user && current_api_user.role != 'client'
+    if current_api_user && current_api_user.role != 'student'
       render json: { error: 'Not authorized to access', status: 401 }
     end
   end
