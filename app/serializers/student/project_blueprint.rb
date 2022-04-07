@@ -11,7 +11,7 @@ class Student::ProjectBlueprint < Blueprinter::Base
     fields :description,
            :project_duration,
            :invoicing_schedule,
-           :client_type_of_billing,
+           :student_type_of_billing,
            :error_message,
            :is_created_by_client
 

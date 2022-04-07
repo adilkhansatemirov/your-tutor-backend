@@ -1,5 +1,5 @@
-module Freelancer
-  class FreelancerDetailBlueprint < Blueprinter::Base
+module Tutor
+  class TutorDetailBlueprint < Blueprinter::Base
     identifier :id
 
     fields :desired_hourly_rate,

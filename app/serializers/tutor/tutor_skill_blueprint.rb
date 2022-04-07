@@ -1,4 +1,4 @@
-class Freelancer::FreelancerSkillBlueprint < Blueprinter::Base
+class Tutor::TutorSkillBlueprint < Blueprinter::Base
   identifier :id
 
   fields :user_id,

@@ -1,4 +1,4 @@
-class Freelancer::SkillBlueprint < Blueprinter::Base
+class Tutor::SkillBlueprint < Blueprinter::Base
   identifier :id
 
   fields :category,

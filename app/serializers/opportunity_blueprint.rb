@@ -9,8 +9,8 @@ class OpportunityBlueprint < Blueprinter::Base
       description: bid.project.description,
       project_duration: bid.project.project_duration,
       project_status: bid.project.project_status,
-      freelancer_payment_amount: bid.project.freelancer_payment_amount,
-      client_type_of_billing: bid.project.client_type_of_billing,
+      tutor_payment_amount: bid.project.tutor_payment_amount,
+      student_type_of_billing: bid.project.student_type_of_billing,
     }
   end
 end

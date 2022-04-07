@@ -69,6 +69,31 @@ Rails.application.routes.draw do
         end
       end
 
+      # Tutor API
+      namespace :tutor do
+        resources :projects, only: [:index, :show]
+        resources :tutors do
+          collection do
+            get 'current'
+            post 'update_tutor_detail'
+            post 'finish_all_steps'
+            post 'upload_resume'
+            post 'connect_stripe'
+            post 'generate_express_dashboard_link'
+          end
+        end
+        resources :opportunities, only: [:index, :show]
+        resources :project_bids, only: :update
+        resources :timesheets, except: :index
+        resources :time_entries, except: [:index, :show]
+        resources :tutor_skills, only: :index do
+          collection do
+            get 'all'
+            post 'update_skills'
+          end
+        end
+      end
+
     end
   end
 end
