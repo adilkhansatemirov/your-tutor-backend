@@ -1,4 +1,4 @@
-class Api::V1::Tutor::FreelancersController < ApplicationController
+class Api::V1::Tutor::TutorsController < ApplicationController
   before_action :authenticate_api_user!, :require_freelancer
 
   def current
