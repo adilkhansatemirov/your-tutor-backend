@@ -1,27 +1,27 @@
-class Api::V1::Freelancer::TimesheetsController < ApplicationController
+class Api::V1::Tutor::TimesheetsController < ApplicationController
   before_action :authenticate_api_user!, :require_freelancer
 
   # GET /timesheets/:id
   def show
     timesheet = Timesheet.find(params[:id])
-    render json: Freelancer::TimesheetBlueprint.render(timesheet, view: :extended)
+    render json: Tutor::TimesheetBlueprint.render(timesheet, view: :extended)
   end
 
   # POST /timesheets
   def create
-    Freelancer::TimesheetsService.create_timesheet(timesheet_create_params)
+    Tutor::TimesheetsService.create_timesheet(timesheet_create_params)
     render json: { message: "timesheet created" }, status: 200
   end
 
   # PUT /timesheets/:id
   def update
-    Freelancer::TimesheetsService.update_timesheet(timesheet_update_params, params[:id])
+    Tutor::TimesheetsService.update_timesheet(timesheet_update_params, params[:id])
     render json: { message: "timesheet updated" }, status: 200
   end
 
   # DELETE /timesheets/:id
   def destroy
-    Freelancer::TimesheetsService.delete_timesheet(params[:id])
+    Tutor::TimesheetsService.delete_timesheet(params[:id])
     render json: { message: "timesheet deleted" }, status: 200
   end
 
