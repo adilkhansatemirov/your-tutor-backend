@@ -11,22 +11,22 @@ class Admin::TimesheetBlueprint < Blueprinter::Base
   field :project do |timesheet|
     {
       title: timesheet.project.title,
-      client_detail: {
-        company_name: timesheet.project.client_detail.company_name,
+      student_detail: {
+        company_name: timesheet.project.student_detail.company_name,
         user: {
-          first_name: timesheet.project.client_detail.user.first_name,
-          last_name: timesheet.project.client_detail.user.last_name,
+          first_name: timesheet.project.student_detail.user.first_name,
+          last_name: timesheet.project.student_detail.user.last_name,
         },
       },
     }
   end
 
-  field :freelancer do |timesheet|
-    timesheet.freelancer ?
+  field :tutor do |timesheet|
+    timesheet.tutor ?
       {
-        first_name: timesheet.freelancer.first_name,
-        last_name: timesheet.freelancer.last_name,
-        email: timesheet.freelancer.email,
+        first_name: timesheet.tutor.first_name,
+        last_name: timesheet.tutor.last_name,
+        email: timesheet.tutor.email,
       } : nil
   end
 
@@ -34,11 +34,11 @@ class Admin::TimesheetBlueprint < Blueprinter::Base
     field :notes
 
     field :amount do |timesheet|
-      if timesheet.project.client_type_of_billing == "custom_type"
-        timesheet.project.freelancer_payment_amount
+      if timesheet.project.student_type_of_billing == "custom_type"
+        timesheet.project.tutor_payment_amount
       else
         hours = timesheet.time_entries.sum(&:hours)
-        total = hours * timesheet.project.freelancer_payment_amount
+        total = hours * timesheet.project.tutor_payment_amount
       end
     end
 

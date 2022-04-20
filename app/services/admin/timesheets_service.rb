@@ -5,7 +5,7 @@ module Admin::TimesheetsService
     timesheet.update(params)
 
     if params[:timesheet_status] == 'rejected'
-      freelancer = timesheet.project.freelancer_detail.user
+      freelancer = timesheet.project.tutor_detail.user
       Admin::NotificationsService.notify_about_rejected_timesheet(freelancer, timesheet)
     end
   end
@@ -23,14 +23,14 @@ module Admin::TimesheetsService
 
   def self.count_total_of_timesheet(timesheet, freelancer)
     total = 0
-    if timesheet.project.client_type_of_billing == "custom_type"
-      total = timesheet.project.freelancer_payment_amount
+    if timesheet.project.student_type_of_billing == "custom_type"
+      total = timesheet.project.tutor_payment_amount
     else
       hours = 0
       timesheet.time_entries.each do |time_entry|
         hours += time_entry.hours
       end
-      total = hours * timesheet.project.freelancer_payment_amount
+      total = hours * timesheet.project.tutor_payment_amount
     end
     total = (total * 100).round
 

@@ -45,10 +45,10 @@ class Api::V1::Admin::TimesheetsController < ApplicationController
   def timesheets_scope
     Timesheet.where.not(timesheet_status: :edited)
     .joins("INNER JOIN projects on timesheets.project_id = projects.id")
-    .joins("INNER JOIN client_details on projects.client_detail_id = client_details.id")
-    .joins("INNER JOIN freelancer_details on projects.freelancer_detail_id = freelancer_details.id")
-    .joins("INNER JOIN users as clients on client_details.user_id = clients.id")
-    .joins("INNER JOIN users as freelancers on freelancer_details.user_id = freelancers.id").order(updated_at: :desc)
+    .joins("INNER JOIN student_details on projects.student_detail_id = student_details.id")
+    .joins("INNER JOIN tutor_details on projects.tutor_detail_id = tutor_details.id")
+    .joins("INNER JOIN users as student on student_details.user_id = student.id")
+    .joins("INNER JOIN users as tutors on tutor_details.user_id = tutors.id").order(updated_at: :desc)
   end
 
   def timesheet_params
