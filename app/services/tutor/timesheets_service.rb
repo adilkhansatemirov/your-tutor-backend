@@ -3,10 +3,10 @@ module Tutor::TimesheetsService
   def self.create_timesheet(params)
     timesheet = Timesheet.new(params.except(:time_entries))
     timesheet.save
-    Freelancer::TimeEntriesService.create_multiple(params[:time_entries], timesheet.id)
+    Tutor::TimeEntriesService.create_multiple(params[:time_entries], timesheet.id)
 
     if params[:timesheet_status] == "submitted"
-      Freelancer::NotificationsService.notify_about_new_timesheet(timesheet)
+      Tutor::NotificationsService.notify_about_new_timesheet(timesheet)
     end
   end
 
@@ -15,7 +15,7 @@ module Tutor::TimesheetsService
     timesheet.update(params)
 
     if params[:timesheet_status] == "submitted"
-      Freelancer::NotificationsService.notify_about_new_timesheet(timesheet)
+      Tutor::NotificationsService.notify_about_new_timesheet(timesheet)
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_21_084142) do
+ActiveRecord::Schema.define(version: 2022_04_18_071701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 2022_03_21_084142) do
     t.date "timesheet_date"
     t.text "notes"
     t.bigint "project_id"
-    t.bigint "freelancer_id"
+    t.bigint "tutor_id"
     t.index ["project_id"], name: "index_timesheets_on_project_id"
   end
 

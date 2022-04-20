@@ -32,7 +32,7 @@ class Api::V1::Tutor::TimesheetsController < ApplicationController
       :project_id,
       :timesheet_status,
       :timesheet_date,
-      :freelancer_id,
+      :tutor_id,
       :notes,
       time_entries: [
         :customer,
