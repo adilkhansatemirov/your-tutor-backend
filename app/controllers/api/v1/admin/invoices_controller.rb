@@ -6,7 +6,7 @@ class Api::V1::Admin::InvoicesController < ApplicationController
   before_action :authenticate_api_user!, :require_admin
 
   filterable_by 'invoice_status'
-  sortable_by 'invoices.invoice_date', 'clients.first_name', 'freelancers.first_name', 'projects.title'
+  sortable_by 'invoices.invoice_date', 'students.first_name', 'tutors.first_name', 'projects.title'
 
   # GET /admin/invoices
   def index
@@ -51,10 +51,10 @@ class Api::V1::Admin::InvoicesController < ApplicationController
 
   def invoices_scope
     Invoice.joins("INNER JOIN projects on invoices.project_id = projects.id")
-        .joins("INNER JOIN client_details on projects.client_detail_id = client_details.id")
-        .joins("INNER JOIN freelancer_details on projects.freelancer_detail_id = freelancer_details.id")
-        .joins("INNER JOIN users as clients on client_details.user_id = clients.id")
-        .joins("INNER JOIN users as freelancers on freelancer_details.user_id = freelancers.id")
+        .joins("INNER JOIN student_details on projects.student_detail_id = student_details.id")
+        .joins("INNER JOIN tutor_details on projects.tutor_detail_id = tutor_details.id")
+        .joins("INNER JOIN users as students on student_details.user_id = students.id")
+        .joins("INNER JOIN users as tutors on tutor_details.user_id = tutors.id")
         .order(updated_at: :desc)
   end
 
