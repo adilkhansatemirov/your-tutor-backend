@@ -1,7 +1,7 @@
-module Tutor::FreelancersService
+module Tutor::TutorsService
 
   def self.upload_resume(user_id, resume)
-    freelancer_detail = FreelancerDetail.find_by(user_id: user_id)
+    freelancer_detail = TutorDetail.find_by(user_id: user_id)
     resume_uploaded = Cloudinary::Uploader.upload(resume, :use_filename => true, :unique_filename => false, :resource_type => :auto)
     freelancer_detail.update(
       resume_url: resume_uploaded["secure_url"],
@@ -22,7 +22,7 @@ module Tutor::FreelancersService
 
   def self.finish_all_steps(user_id)
     user = User.find(user_id)
-    user.freelancer_detail.update(interview_scheduled: true)
+    user.tutor_detail.update(interview_scheduled: true)
   end
 
   def self.generate_express_dashboard_link(user_id)

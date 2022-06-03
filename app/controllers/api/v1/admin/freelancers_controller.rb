@@ -4,7 +4,7 @@ class Api::V1::Admin::FreelancersController < ApplicationController
   # GET /admin/freelancers/:id
   def show
     freelancer = User.find(params[:id])
-    render json: Admin::FreelancerBlueprint.render(freelancer, view: :extended)
+    render json: Admin::TutorBlueprint.render(freelancer, view: :extended)
   end
 
   # POST /admin/freelancers/upload_resume

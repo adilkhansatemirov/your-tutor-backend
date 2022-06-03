@@ -29,7 +29,6 @@ class Mailer < ActionMailer::Base
           "value": "<html>
             <head></head>
             <body style=\"text-align:center; font-family:sans-serif; width:630px; margin:0 auto\">
-              <img src=\"https://res.cloudinary.com/dghasvvlv/image/upload/v1604128867/logo-blue_koemhn.png\" style=\"width:140px; margin:20px 0 0\" alt=\"Inhome Accountants logo\"/>
               <hr style=\"height: 1px; background-color:#eee; border:0; margin:20px 0\">
               <header>
                 <h2 style=\"margin:0 0 10px; color:#032c5c; font-size:40px;\">#{email[:subject]}</h2>

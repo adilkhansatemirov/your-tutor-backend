@@ -13,7 +13,7 @@ module Admin::FreelancersService
 
   def self.qualify_freelancer(user_id)
     user = User.find(user_id)
-    user.freelancer_detail.update(qualified: true)
+    user.tutor_detail.update(qualified: true)
   end
 
   def self.delete_freelancer(user_id)

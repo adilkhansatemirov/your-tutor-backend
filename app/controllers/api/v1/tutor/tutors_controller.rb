@@ -14,25 +14,25 @@ class Api::V1::Tutor::TutorsController < ApplicationController
 
   # POST /freelancer/freelancers/upload_resume
   def upload_resume
-    Tutor::FreelancersService.upload_resume(current_api_user.id, params[:resume])
+    Tutor::TutorsService.upload_resume(current_api_user.id, params[:resume])
     render json: { message: "Resume has been uploaded" }, status: 200
   end
 
   # POST /freelancer/freelancers/connect_stripe
   def connect_stripe
-    Tutor::FreelancersService.connect_stripe(current_api_user.id, freelancer_connect_stripe_params[:code])
+    Tutor::TutorsService.connect_stripe(current_api_user.id, freelancer_connect_stripe_params[:code])
     render json: { message: 'Stripe has been connected' }, status: 200
   end
 
   # POST /freelancer/freelancers/finish_all_steps
   def finish_all_steps
-    Tutor::FreelancersService.finish_all_steps(current_api_user.id)
+    Tutor::TutorsService.finish_all_steps(current_api_user.id)
     render json: { message: "User updated" }, status: 200
   end
 
   # POST /freelancer/freelancers/generate_express_dashboard_link
   def generate_express_dashboard_link
-    link = Tutor::FreelancersService.generate_express_dashboard_link(current_api_user.id)
+    link = Tutor::TutorsService.generate_express_dashboard_link(current_api_user.id)
     render json: { link: link }, status: 200
   end
 

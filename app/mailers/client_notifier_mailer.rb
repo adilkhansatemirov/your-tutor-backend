@@ -25,12 +25,12 @@ class ClientNotifierMailer < ActionMailer::Base
           "substitutions": {
             "-activation_code-": "#{FRONTEND_HOST}/reset-password?token=#{raw}" 
           },
-          "subject": "InHome Accountants"
+          "subject": "Your Tutor"
           }
         ],
         "from": {
         "email": FROM_EMAIL,
-        "name": "InHome Accountants"
+        "name": "Your Tutor"
       },
       "content": [
         {
@@ -41,7 +41,7 @@ class ClientNotifierMailer < ActionMailer::Base
               <img src="http://idylle.maskandesign.com/red/logo_lg.png" style="width:140px; margin:20px 0 0">
               <hr style="height: 1px; background-color:#eee; border:0; margin:20px 0">
               <header>
-                <h2 style="margin:0 0 10px; color:#032c5c; font-size:40px;">Welcome to InHome Accountants!</h2>
+                <h2 style="margin:0 0 10px; color:#032c5c; font-size:40px;">Welcome to YourTutor!</h2>
               </header>
               <div style="color:#868686;">
                   <p style="color:#1d1c1d; font-size:20px; margin:5px 0;"> We created an account for you </p>
